@@ -35,14 +35,14 @@ namespace WorldTraveler.Controllers
             }
         public IActionResult Edit(int id)
         {
-            var thisPeople = db.Peoples.FirstOrDefault(Peoples => Peoples.PeopleId == id);
+            var thisPeople = db.Peoples.FirstOrDefault(peoples => peoples.PeopleId == id);
             ViewBag.ExperienceId = new SelectList(db.Experiences, "ExperienceId", "Description");
             return View(thisPeople);
         }
         [HttpPost]
-        public IActionResult Edit(People People)
+        public IActionResult Edit(People people)
         {
-            db.Entry(People).State = EntityState.Modified;
+            db.Entry(people).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
